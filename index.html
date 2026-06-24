@@ -345,7 +345,7 @@
     <span><strong id="stat-done">0</strong> lessons completed</span>
     <span><strong>6</strong> chapters</span>
     <span><strong id="stat-total-lessons">—</strong> lessons &amp; projects</span>
-    <span><strong id="stat-submissions">—</strong> submitted projects</span>
+    <span><strong id="stat-submissions">0</strong> projects completed</span>
   </div>
 </header>
 
@@ -375,6 +375,7 @@
     const container = document.getElementById('curriculum');
     let totalItems = 0;
     let doneItems  = 0;
+    let doneProjects = 0;
     let firstIncomplete = null;
 
     manifest.chapters.forEach((chapter) => {
@@ -382,6 +383,7 @@
       totalItems += allItems.length;
       const doneCh = allItems.filter(it => isDone(it, progress)).length;
       doneItems  += doneCh;
+      doneProjects += allItems.filter(it => (it.type === 'project' || it.type === 'chapter-project') && isDone(it, progress)).length;
 
       if (!firstIncomplete) {
         firstIncomplete = allItems.find(it => !isDone(it, progress)) || null;
@@ -423,6 +425,7 @@
     // Stats strip
     document.getElementById('stat-done').textContent = doneItems;
     document.getElementById('stat-total-lessons').textContent = totalItems;
+    document.getElementById('stat-submissions').textContent = doneProjects;
 
     // Continue button
     if (firstIncomplete) {
@@ -435,21 +438,7 @@
     window.addEventListener('progress-change', () => location.reload());
   }
 
-  async function fetchSubmissions() {
-    try {
-      const res = await fetch(
-        'https://api.github.com/repos/SuperMo0/AI-engineering-road/discussions?per_page=1',
-        { headers: { 'Accept': 'application/vnd.github+json' } }
-      );
-      if (!res.ok) return;
-      const link = res.headers.get('Link') || '';
-      const m = link.match(/[?&]page=(\d+)>;\s*rel="last"/);
-      const count = m ? m[1] : (await res.json()).length;
-      document.getElementById('stat-submissions').textContent = count;
-    } catch {}
-  }
-
-  function renderTopic(topic, progress) {
+function renderTopic(topic, progress) {
     const rows = topic.items.map(item => {
       const slug   = item.file.replace('lessons/', '').replace('.html', '');
       const done   = !!(progress[item.id] || progress[slug]);
@@ -475,7 +464,6 @@
   }
 
   init();
-  fetchSubmissions();
 </script>
 
 </body>

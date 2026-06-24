@@ -49,4 +49,64 @@ layout: default
   import { initThemeToggle } from '{{ "/assets/theme.js" | relative_url }}';
   initMarkComplete('{{ page.lesson_id }}');
   initThemeToggle();
+
+  // ── Heading anchors + TOC ──────────────────────────────────────
+  function slugify(text) {
+    return text.toLowerCase()
+      .replace(/[^\w\s-]/g, '')
+      .trim()
+      .replace(/[\s_]+/g, '-');
+  }
+
+  const content = document.querySelector('.lesson-content');
+  if (content) {
+    const headings = Array.from(content.querySelectorAll('h2, h3'));
+
+    // Assign IDs and append anchor links
+    headings.forEach(h => {
+      if (!h.id) h.id = slugify(h.textContent);
+      const a = document.createElement('a');
+      a.className = 'heading-anchor';
+      a.href = '#' + h.id;
+      a.textContent = '§';
+      a.setAttribute('aria-hidden', 'true');
+      h.appendChild(a);
+    });
+
+    // Build TOC sidebar
+    if (headings.length > 1) {
+      const toc = document.createElement('nav');
+      toc.className = 'lesson-toc';
+      toc.setAttribute('aria-label', 'On this page');
+      const label = document.createElement('div');
+      label.className = 'toc-label';
+      label.textContent = 'On this page';
+      const ul = document.createElement('ul');
+      headings.forEach(h => {
+        const li = document.createElement('li');
+        if (h.tagName === 'H3') li.className = 'toc-sub';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent.replace(/§$/, '').trim();
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      toc.appendChild(label);
+      toc.appendChild(ul);
+      document.body.appendChild(toc);
+
+      // Scroll spy via IntersectionObserver
+      const links = Array.from(ul.querySelectorAll('a'));
+      let activeId = null;
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) activeId = e.target.id;
+        });
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + activeId));
+      }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+      headings.forEach(h => observer.observe(h));
+    }
+  }
 </script>
