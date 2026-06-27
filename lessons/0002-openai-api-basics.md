@@ -61,6 +61,9 @@ additional_resources:
   - title: "OpenAI Cookbook"
     url: "https://cookbook.openai.com/"
     desc: "Curated examples of real API usage patterns; useful as a reference after you have the basics down"
+  - title: "Tiktokenizer"
+    url: "https://tiktokenizer.vercel.app/"
+    desc: "Interactive tokenizer — paste any text to see exactly how OpenAI models split it into tokens and how many tokens it costs"
 ---
 
 ## Motivation
@@ -77,7 +80,7 @@ A **Large Language Model** — LLM for short — is a type of AI model that take
 
 Under the hood, an LLM is a massive mathematical function — billions of numbers (called parameters) arranged so that given some input text, the model can predict what text should come next. It does this one small piece at a time. Those small pieces are called **tokens**.
 
-A **token** is the unit an LLM uses to measure and process text. A token is roughly four characters, or about three-quarters of an average English word. The word "hello" is one token. The word "unfortunately" is four tokens. A full paragraph might be 80–100 tokens. Tokens matter because LLM providers charge you per token — more text means more cost.
+A **token** is the unit an LLM uses to measure and process text. A token is roughly four characters — about three-quarters of an average English word. (Words average five or more characters plus spaces, so one token covers slightly less than one word — four characters per token × 1,000,000 tokens = 4,000,000 characters; at five-plus characters per word, that is roughly 750,000 words.) The word "hello" is one token. The word "unfortunately" is four tokens. A full paragraph might be 80–100 tokens. Tokens matter because LLM providers charge you per token — more text means more cost.
 
 As an AI engineer, you will never train or modify an LLM. These models take months and millions of dollars to train, and that work is done by companies like OpenAI and Anthropic. Your job is to call them via an API — the same way a web developer calls a weather API, not writes the meteorological simulation.
 
@@ -145,7 +148,7 @@ response = client.chat.completions.create(
 
 Each message in the list is a dictionary with two keys:
 
-- `role` — who is speaking. `"user"` is the person asking; `"assistant"` is the model's previous replies; `"system"` gives background instructions (covered in Lesson 3).
+- `role` — who is speaking. For a single question you only need `"user"`. Two other roles exist: `"assistant"` (the model's previous replies) and `"system"` (background instructions) — both are introduced in Lesson 3 when you build multi-turn conversations.
 - `content` — the text of that message.
 
 For a single question with no history, the messages list contains just one entry with role `"user"`.

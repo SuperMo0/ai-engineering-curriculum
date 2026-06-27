@@ -17,10 +17,10 @@ prereqs:
 assignment:
   article:
     title: "Open LLM Leaderboard v2"
-    url: "https://huggingface.co/blog/open-llm-leaderboard-v2"
+    url: "https://huggingface.co/collections/open-llm-leaderboard/open-llm-leaderboard-2"
     author: "Hugging Face team"
     time: "about 12 minutes"
-    why: "Before you can choose a local model, you need to know how open models are compared. This post explains what the benchmarks measure, what the numbers mean in practice, and how to read a leaderboard ranking when selecting a model for a real project."
+    why: "Before you can choose a local model, you need to know how open models are compared. Explore the leaderboard to understand what benchmarks measure, what the numbers mean in practice, and how to read rankings when selecting a model for a real project."
   task:
     description: "Add Ollama as a third provider to your multi-provider assistant from Lesson 7."
     steps:
@@ -65,9 +65,9 @@ additional_resources:
   - title: "Transformers quick tour"
     url: "https://huggingface.co/docs/transformers/quicktour"
     desc: "Official introduction to the `pipeline()` API"
-  - title: "Open LLM Leaderboard"
-    url: "https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard"
-    desc: "Live benchmark rankings for open models"
+  - title: "Open LLM Leaderboard v2"
+    url: "https://huggingface.co/collections/open-llm-leaderboard/open-llm-leaderboard-2"
+    desc: "Benchmark rankings for open models — the canonical source for comparing open-weight models"
 ---
 
 ## Motivation

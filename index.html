@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Engineering Curriculum</title>
-  <script>if(localStorage.getItem('ai-curriculum-theme')==='dark')document.documentElement.classList.add('dark')</script>
+  <script>if (localStorage.getItem('ai-curriculum-theme') === 'dark') document.documentElement.classList.add('dark')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <style>
     :root {
-      --text:        #1c1917;
-      --text-muted:  #78716c;
-      --text-light:  #a8a29e;
-      --bg:          #faf8f5;
-      --bg-alt:      #f0ede8;
-      --bg-hover:    #e8e3dc;
-      --border:      #e5e0d8;
-      --accent:      #009485;
+      --text: #1c1917;
+      --text-muted: #78716c;
+      --text-light: #a8a29e;
+      --bg: #faf8f5;
+      --bg-alt: #f0ede8;
+      --bg-hover: #e8e3dc;
+      --border: #e5e0d8;
+      --accent: #009485;
       --accent-dark: #007a6e;
-      --success:     #16a34a;
-      --success-bg:  #dcfce7;
-      --success-fg:  #15803d;
-      --project-bg:  #ede9fe;
-      --project-fg:  #6d28d9;
-      --lesson-bg:   #ccf0ec;
-      --lesson-fg:   #007a6e;
-      --font-ui:     'Inter', system-ui, -apple-system, sans-serif;
+      --success: #16a34a;
+      --success-bg: #dcfce7;
+      --success-fg: #15803d;
+      --project-bg: #ede9fe;
+      --project-fg: #6d28d9;
+      --lesson-bg: #ccf0ec;
+      --lesson-fg: #007a6e;
+      --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
     html.dark {
-      --text:        #e2e8f0;
-      --text-muted:  #94a3b8;
-      --text-light:  #64748b;
-      --bg:          #1f1f1e;
-      --bg-alt:      #2a2a28;
-      --bg-hover:    #333331;
-      --border:      #3a3a38;
-      --accent:      #009485;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-light: #64748b;
+      --bg: #1f1f1e;
+      --bg-alt: #2a2a28;
+      --bg-hover: #333331;
+      --border: #3a3a38;
+      --accent: #009485;
       --accent-dark: #00c4b0;
-      --success:     #4ade80;
-      --success-bg:  #052e16;
-      --success-fg:  #4ade80;
-      --project-bg:  #1e1b4b;
-      --project-fg:  #a78bfa;
-      --lesson-bg:   #0a2420;
-      --lesson-fg:   #009485;
+      --success: #4ade80;
+      --success-bg: #052e16;
+      --success-fg: #4ade80;
+      --project-bg: #1e1b4b;
+      --project-fg: #a78bfa;
+      --lesson-bg: #0a2420;
+      --lesson-fg: #009485;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: var(--font-ui);
@@ -74,10 +81,15 @@
       align-items: center;
       justify-content: center;
       z-index: 200;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
       transition: background 0.15s, box-shadow 0.15s;
     }
-    .theme-toggle:hover { background: var(--bg-hover); color: var(--text); box-shadow: 0 2px 6px rgba(0,0,0,0.13); }
+
+    .theme-toggle:hover {
+      background: var(--bg-hover);
+      color: var(--text);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.13);
+    }
 
     /* ── Logo ── */
     .site-logo {
@@ -87,6 +99,7 @@
       text-decoration: none;
       margin-bottom: 1.25rem;
     }
+
     .logo-mark {
       display: inline-flex;
       align-items: center;
@@ -95,8 +108,8 @@
       height: 2.6rem;
       background-color: var(--accent);
       background-image:
-        linear-gradient(rgba(255,255,255,0.13) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.13) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.13) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.13) 1px, transparent 1px);
       background-size: 7px 7px;
       color: #fff;
       font-size: 0.65rem;
@@ -106,6 +119,7 @@
       font-family: var(--font-ui);
       flex-shrink: 0;
     }
+
     .logo-name {
       font-size: 0.85rem;
       font-weight: 600;
@@ -113,6 +127,7 @@
       letter-spacing: -0.01em;
       line-height: 1.2;
     }
+
     .logo-name small {
       display: block;
       font-size: 0.7rem;
@@ -150,8 +165,16 @@
       font-size: 0.8rem;
       color: var(--text-light);
     }
-    .repo-banner a { color: var(--accent); text-decoration: none; font-weight: 500; }
-    .repo-banner a:hover { text-decoration: underline; }
+
+    .repo-banner a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .repo-banner a:hover {
+      text-decoration: underline;
+    }
 
     /* ── Progress bar ── */
     .progress-bar-wrap {
@@ -211,7 +234,9 @@
       color: var(--text);
     }
 
-    .chapter-header:hover { background: var(--bg-hover); }
+    .chapter-header:hover {
+      background: var(--bg-hover);
+    }
 
     .chapter-number {
       font-size: 0.7rem;
@@ -242,14 +267,18 @@
       flex-shrink: 0;
     }
 
-    .chapter.open .chapter-chevron { transform: rotate(90deg); }
+    .chapter.open .chapter-chevron {
+      transform: rotate(90deg);
+    }
 
     .chapter-body {
       display: none;
       border-top: 1px solid var(--border);
     }
 
-    .chapter.open .chapter-body { display: block; }
+    .chapter.open .chapter-body {
+      display: block;
+    }
 
     /* ── Chapter goal ── */
     .chapter-goal {
@@ -261,8 +290,13 @@
     }
 
     /* ── Topic ── */
-    .topic { border-bottom: 1px solid var(--border); }
-    .topic:last-child { border-bottom: none; }
+    .topic {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topic:last-child {
+      border-bottom: none;
+    }
 
     .topic-title {
       font-size: 0.7rem;
@@ -281,7 +315,9 @@
       padding: 0.45rem 1.25rem 0.45rem 1.5rem;
     }
 
-    .item:last-child { padding-bottom: 0.75rem; }
+    .item:last-child {
+      padding-bottom: 0.75rem;
+    }
 
     .item-check {
       width: 18px;
@@ -313,9 +349,20 @@
       flex-shrink: 0;
     }
 
-    .badge-lesson         { background: var(--lesson-bg); color: var(--lesson-fg); }
-    .badge-project        { background: var(--success-bg); color: var(--success-fg); }
-    .badge-chapter-project{ background: var(--project-bg); color: var(--project-fg); }
+    .badge-lesson {
+      background: var(--lesson-bg);
+      color: var(--lesson-fg);
+    }
+
+    .badge-project {
+      background: var(--success-bg);
+      color: var(--success-fg);
+    }
+
+    .badge-chapter-project {
+      background: var(--project-bg);
+      color: var(--project-fg);
+    }
 
     .item-link {
       font-size: 0.875rem;
@@ -324,10 +371,19 @@
       flex: 1;
     }
 
-    .item-link:hover { color: var(--accent-dark); text-decoration: underline; }
+    .item-link:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
 
-    .item.locked .item-link  { color: var(--text-light); pointer-events: none; }
-    .item.locked .item-badge { opacity: 0.4; }
+    .item.locked .item-link {
+      color: var(--text-light);
+      pointer-events: none;
+    }
+
+    .item.locked .item-badge {
+      opacity: 0.4;
+    }
 
     /* ── Planned chapter ── */
     .planned-note {
@@ -351,8 +407,16 @@
       transition: background 0.15s;
       max-width: 220px;
     }
-    .continue-btn:hover { background: var(--accent-dark); color: #fff; }
-    .continue-btn.visible { display: inline-flex; }
+
+    .continue-btn:hover {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .continue-btn.visible {
+      display: inline-flex;
+    }
+
     .cb-label {
       font-size: 0.63rem;
       font-weight: 600;
@@ -360,6 +424,7 @@
       letter-spacing: 0.06em;
       opacity: 0.78;
     }
+
     .cb-title {
       font-size: 0.8rem;
       font-weight: 600;
@@ -377,7 +442,10 @@
       font-size: 0.8rem;
       color: var(--text-light);
     }
-    .site-stats strong { color: var(--text-muted); }
+
+    .site-stats strong {
+      color: var(--text-muted);
+    }
 
     /* ── Site footer ── */
     .site-footer {
@@ -391,90 +459,97 @@
       font-size: 0.8rem;
       color: var(--text-light);
     }
+
     .footer-credits {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
-    .site-footer a { color: var(--text-muted); }
-    .site-footer a:hover { color: var(--accent); }
+
+    .site-footer a {
+      color: var(--text-muted);
+    }
+
+    .site-footer a:hover {
+      color: var(--accent);
+    }
   </style>
 </head>
+
 <body>
 
-<header class="site-header">
-  <a class="site-logo" href="./">
-    <span class="logo-mark">AIEC</span>
-    <span class="logo-name">AI Engineering Curriculum<small>Python dev → hireable AI Engineer</small></span>
-  </a>
-  <p>A self-paced curriculum to go from Python developer to hireable AI Engineer — built in the spirit of The Odin Project.</p>
-  <div class="progress-bar-wrap">
-    <div class="progress-bar">
-      <div class="progress-bar-fill" id="progress-fill"></div>
+  <header class="site-header">
+    <a class="site-logo" href="./">
+      <span class="logo-mark">AIEC</span>
+      <span class="logo-name">AI Engineering Curriculum<small>Python dev → hireable AI Engineer</small></span>
+    </a>
+    <p>A self-paced curriculum to go from Python developer to hireable AI Engineer — built in the spirit of The Odin
+      Project.</p>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+      <span id="progress-label">0 of 0 complete</span>
+      <a class="continue-btn" id="continue-btn" href="#">Continue →</a>
     </div>
-    <span id="progress-label">0 of 0 complete</span>
-    <a class="continue-btn" id="continue-btn" href="#">Continue →</a>
-  </div>
-  <div class="site-stats">
-    <span><strong id="stat-done">0</strong> lessons completed</span>
-    <span><strong>6</strong> chapters</span>
-    <span><strong id="stat-total-lessons">—</strong> lessons &amp; projects</span>
-    <span><strong id="stat-submissions">0</strong> projects completed</span>
-  </div>
-</header>
+    <div class="site-stats">
+      <span><strong id="stat-done">0</strong> lessons completed</span>
+      <span><strong>6</strong> chapters</span>
+      <span><strong id="stat-total-lessons">—</strong> lessons &amp; projects</span>
+      <span><strong id="stat-submissions">0</strong> projects completed</span>
+    </div>
+  </header>
 
-<main class="site-body" id="curriculum"></main>
+  <main class="site-body" id="curriculum"></main>
 
-<footer class="site-footer">
-  <div class="repo-banner">
-    <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-    Open source — <a href="https://github.com/SuperMo0/ai-engineering-curriculum" target="_blank" rel="noopener">contributions welcome</a> &middot; lessons, fixes &amp; improvements
-  </div>
-  <div class="footer-credits">
-    <span>Curriculum inspired by the work of <a href="https://www.aihero.dev" target="_blank" rel="noopener">Matt Pocock</a> and <a href="https://www.daveebbelaar.com" target="_blank" rel="noopener">Dave Ebbelaar</a>.</span>
-    <span>Built in the spirit of <a href="https://www.theodinproject.com" target="_blank" rel="noopener">The Odin Project</a>.</span>
-  </div>
-</footer>
+  <footer class="site-footer">
+    <span>Curriculum inspired by <a
+        href="https://github.com/daveebbelaar/ai-cookbook/blob/main/roadmaps/ai-engineer-2026.md" target="_blank"
+        rel="noopener">Dave Ebbelaar</a>
+      AI Engineer Roadmap (2026).</span>
+    <span>Built in the spirit of <a href="https://www.theodinproject.com" target="_blank" rel="noopener">The Odin
+        Project</a>.</span>
+  </footer>
 
-<script type="module">
-  import { getProgress } from './assets/progress.js';
-  import { initThemeToggle } from './assets/theme.js';
-  initThemeToggle();
+  <script type="module">
+    import { getProgress } from './assets/progress.js';
+    import { initThemeToggle } from './assets/theme.js';
+    initThemeToggle();
 
-  const MANIFEST_URL = './assets/lesson-manifest.json';
+    const MANIFEST_URL = './assets/lesson-manifest.json';
 
-  function isDone(item, progress) {
-    const slug = item.file.replace('lessons/', '').replace('.html', '');
-    return !!(progress[item.id] || progress[slug]);
-  }
+    function isDone(item, progress) {
+      const slug = item.file.replace('lessons/', '').replace('.html', '');
+      return !!(progress[item.id] || progress[slug]);
+    }
 
-  async function init() {
-    const manifest = await fetch(MANIFEST_URL).then(r => r.json());
-    const progress  = getProgress();
+    async function init() {
+      const manifest = await fetch(MANIFEST_URL).then(r => r.json());
+      const progress = getProgress();
 
-    const container = document.getElementById('curriculum');
-    let totalItems = 0;
-    let doneItems  = 0;
-    let doneProjects = 0;
-    let firstIncomplete = null;
+      const container = document.getElementById('curriculum');
+      let totalItems = 0;
+      let doneItems = 0;
+      let doneProjects = 0;
+      let firstIncomplete = null;
 
-    manifest.chapters.forEach((chapter) => {
-      const allItems = chapter.topics.flatMap(t => t.items);
-      totalItems += allItems.length;
-      const doneCh = allItems.filter(it => isDone(it, progress)).length;
-      doneItems  += doneCh;
-      doneProjects += allItems.filter(it => (it.type === 'project' || it.type === 'chapter-project') && isDone(it, progress)).length;
+      manifest.chapters.forEach((chapter) => {
+        const allItems = chapter.topics.flatMap(t => t.items);
+        totalItems += allItems.length;
+        const doneCh = allItems.filter(it => isDone(it, progress)).length;
+        doneItems += doneCh;
+        doneProjects += allItems.filter(it => (it.type === 'project' || it.type === 'chapter-project') && isDone(it, progress)).length;
 
-      if (!firstIncomplete) {
-        firstIncomplete = allItems.find(it => !isDone(it, progress)) || null;
-      }
+        if (!firstIncomplete) {
+          firstIncomplete = allItems.find(it => !isDone(it, progress)) || null;
+        }
 
-      const isPlanned = chapter.status === 'planned';
+        const isPlanned = chapter.status === 'planned';
 
-      const el = document.createElement('div');
-      el.className = 'chapter';
-      el.innerHTML = `
+        const el = document.createElement('div');
+        el.className = 'chapter';
+        el.innerHTML = `
         <button class="chapter-header" aria-expanded="false">
           <span class="chapter-number">Chapter ${chapter.number}</span>
           <span class="chapter-title">${chapter.title}</span>
@@ -490,71 +565,63 @@
         </div>
       `;
 
-      el.querySelector('.chapter-header').addEventListener('click', () => {
-        const open = el.classList.toggle('open');
-        el.querySelector('.chapter-header').setAttribute('aria-expanded', open);
+        el.querySelector('.chapter-header').addEventListener('click', () => {
+          const open = el.classList.toggle('open');
+          el.querySelector('.chapter-header').setAttribute('aria-expanded', open);
+        });
+
+        container.appendChild(el);
       });
 
-      container.appendChild(el);
-    });
+      // Progress bar
+      const pct = totalItems ? Math.round((doneItems / totalItems) * 100) : 0;
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-label').textContent = `${doneItems} of ${totalItems} complete`;
 
-    // Progress bar
-    const pct = totalItems ? Math.round((doneItems / totalItems) * 100) : 0;
-    document.getElementById('progress-fill').style.width = pct + '%';
-    document.getElementById('progress-label').textContent = `${doneItems} of ${totalItems} complete`;
+      // Stats strip
+      document.getElementById('stat-done').textContent = doneItems;
+      document.getElementById('stat-total-lessons').textContent = totalItems;
+      document.getElementById('stat-submissions').textContent = doneProjects;
 
-    // Stats strip
-    document.getElementById('stat-done').textContent = doneItems;
-    document.getElementById('stat-total-lessons').textContent = totalItems;
-    document.getElementById('stat-submissions').textContent = doneProjects;
+      // Continue button
+      if (firstIncomplete) {
+        const btn = document.getElementById('continue-btn');
+        btn.href = './' + firstIncomplete.file;
+        btn.classList.add('visible');
+      }
 
-    // Continue button
-    if (firstIncomplete) {
-      const btn = document.getElementById('continue-btn');
-      btn.href = './' + firstIncomplete.file;
-      const label = document.createElement('span');
-      label.className = 'cb-label';
-      label.textContent = 'Continue →';
-      const title = document.createElement('span');
-      title.className = 'cb-title';
-      title.textContent = firstIncomplete.title;
-      btn.innerHTML = '';
-      btn.appendChild(label);
-      btn.appendChild(title);
-      btn.classList.add('visible');
+      // Re-render on progress change
+      window.addEventListener('progress-change', () => location.reload());
     }
 
-    // Re-render on progress change
-    window.addEventListener('progress-change', () => location.reload());
-  }
-
-function renderTopic(topic, progress) {
-    const rows = topic.items.map(item => {
-      const slug   = item.file.replace('lessons/', '').replace('.html', '');
-      const done   = !!(progress[item.id] || progress[slug]);
-      const badge  = item.type === 'chapter-project' ? 'chapter-project'
-                   : item.type === 'project'         ? 'project'
-                   :                                   'lesson';
-      const label  = badge === 'chapter-project' ? 'Chapter Project'
-                   : badge === 'project'          ? 'Project'
-                   :                               'Lesson';
-      return `
+    function renderTopic(topic, progress) {
+      const rows = topic.items.map(item => {
+        const slug = item.file.replace('lessons/', '').replace('.html', '');
+        const done = !!(progress[item.id] || progress[slug]);
+        const badge = item.type === 'chapter-project' ? 'chapter-project'
+          : item.type === 'project' ? 'project'
+            : 'lesson';
+        const label = badge === 'chapter-project' ? 'Chapter Project'
+          : badge === 'project' ? 'Project'
+            : 'Lesson';
+        return `
         <div class="item${done ? ' done' : ''}">
           <div class="item-check">${done ? '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</div>
           <span class="item-badge badge-${badge}">${label}</span>
           <a class="item-link" href="./${item.file}">${item.title}</a>
         </div>`;
-    }).join('');
+      }).join('');
 
-    return `
+      return `
       <div class="topic">
         <div class="topic-title">${topic.title}</div>
         ${rows}
       </div>`;
-  }
+    }
 
-  init();
-</script>
+    init();
+  </script>
 
 </body>
+
 </html>

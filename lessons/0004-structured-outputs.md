@@ -35,15 +35,15 @@ knowledge_check:
     section: "#why-free-text-breaks"
     section_title: "Why free-text responses break production code"
   - q: "What method do you use for Structured Outputs with OpenAI, and how does it differ from `.create()`?"
-    a: "`client.beta.chat.completions.parse()`. You pass a Pydantic class as `response_format`. Instead of a string in `response.choices[0].message.content`, the result is a Pydantic object at `response.choices[0].message.parsed` — already typed and validated."
+    a: "`client.chat.completions.parse()`. You pass a Pydantic class as `response_format`. Instead of a string in `response.choices[0].message.content`, the result is a Pydantic object at `response.choices[0].message.parsed` — already typed and validated."
     section: "#structured-outputs-api"
     section_title: "OpenAI Structured Outputs"
   - q: "How do you mark a field as optional in a Pydantic model?"
-    a: "Use `Optional[type]` from Python's `typing` module and give the field a default of `None`: e.g. `vendor_name: Optional[str] = None`. The model will set it to `None` if the information is not present in the input."
+    a: "Use `type | None` syntax and give the field a default of `None`: e.g. `vendor_name: str | None = None`. The model will set it to `None` if the information is not present in the input."
     section: "#optional-fields"
     section_title: "Optional fields and nested models"
   - q: "What changed in Claude 4.6+ that makes the output-prefilling trick unusable?"
-    a: "Claude 4.6+ removed the ability to prefill the assistant's reply (starting the reply with `{\"` to force JSON). Attempting it now returns a 400 error. The correct approach for Claude is the tool-calling API or a system prompt instructing JSON output, validated with `model_validate_json()`."
+    a: "Claude 4.6+ removed the ability to prefill the assistant's reply (starting the reply with `{\"` to force JSON). Attempting it now returns a 400 error. The correct approaches are: the native `client.messages.parse()` with `output_format`, Anthropic's `output_config` API, or the tool-calling API."
     section: "#claude-note"
     section_title: "What about Claude?"
 additional_resources:
@@ -105,7 +105,7 @@ Pydantic is already installed if you have `openai` (it is a dependency), but add
 
 OpenAI's Structured Outputs feature lets you pass a Pydantic model directly to the API. The model is converted to a JSON Schema, sent to the API as a constraint, and the response is *guaranteed* to match that schema. You get back a Pydantic object, not a string.
 
-The method is `client.beta.chat.completions.parse()` — note `.beta` and `.parse()` instead of `.create()`. You pass your Pydantic class as `response_format`:
+The method is `client.chat.completions.parse()` — note `.parse()` instead of `.create()`. You pass your Pydantic class as `response_format`:
 
 ```python
 from pydantic import BaseModel
@@ -126,7 +126,7 @@ Hi, please find attached invoice INV-2024-0042.
 Total due: $1,250.00 USD by 30 January 2025.
 """
 
-response = client.beta.chat.completions.parse(
+response = client.chat.completions.parse(
     model="gpt-4o-mini",
     messages=[
         {"role": "system", "content": "Extract invoice details from the text."},
@@ -143,24 +143,19 @@ print(invoice.currency)         # USD
 
 `response.choices[0].message.parsed` returns a real `Invoice` instance — a Python object with proper types. You can access fields with dot notation. No JSON parsing, no key errors, no type casting.
 
-<div class="callout info">
-<strong>Why <code>.beta</code>?</strong> Structured Outputs is a newer API feature. OpenAI keeps it under <code>.beta</code> while the interface stabilises, but it is production-ready and widely used. The <code>.beta</code> prefix will likely be removed in a future SDK version.
-</div>
-
 ## Optional fields and nested models {#optional-fields}
 
-Real data is messy — not every field will always be present. Mark a field as optional with `Optional` from Python's `typing` module and give it a default of `None`:
+Real data is messy — not every field will always be present. Mark a field as optional using `type | None` and give it a default of `None`:
 
 ```python
 from pydantic import BaseModel
-from typing import Optional
 
 class Invoice(BaseModel):
     invoice_number: str
     total_amount: float
     currency: str
-    due_date: Optional[str] = None    # may not be in every email
-    vendor_name: Optional[str] = None
+    due_date: str | None = None    # may not be in every email
+    vendor_name: str | None = None
 ```
 
 You can also nest Pydantic models for structured sub-objects:
@@ -174,7 +169,7 @@ class Address(BaseModel):
 class Invoice(BaseModel):
     invoice_number: str
     total_amount: float
-    billing_address: Optional[Address] = None
+    billing_address: Address | None = None
 ```
 
 The API handles nested models correctly — `billing_address` will be an `Address` instance or `None`, never a raw dict.
@@ -185,7 +180,6 @@ When the output is naturally a collection — a list of extracted items, a list 
 
 ```python
 from pydantic import BaseModel
-from typing import Optional
 
 class LineItem(BaseModel):
     description: str
@@ -202,10 +196,31 @@ class Invoice(BaseModel):
 
 ## What about Claude? {#claude-note}
 
-Claude (covered in Lesson 7) does not currently support the same `.parse()` Structured Outputs interface. The approach for Claude is slightly different: you use Claude's tool-calling API or instruct it via a system prompt to respond with JSON matching a specific schema, then parse the response yourself with `Model.model_validate_json(response_text)`.
+Claude (covered in depth in Lesson 7) now supports native structured outputs through the same `.parse()` pattern. Pass a Pydantic class as `output_format` and read the result from `response.parsed_output`:
+
+```python
+from pydantic import BaseModel
+from anthropic import Anthropic
+
+class Invoice(BaseModel):
+    invoice_number: str
+    total_amount: float
+    currency: str
+
+client = Anthropic()
+response = client.messages.parse(
+    model="claude-sonnet-4-6",
+    max_tokens=512,
+    messages=[{"role": "user", "content": "Invoice INV-001, total $500 USD."}],
+    output_format=Invoice,
+)
+print(response.parsed_output.invoice_number)  # INV-001
+```
+
+The pattern is nearly identical to OpenAI's. The key differences (covered fully in Lesson 7): `max_tokens` is required, and the system message is a separate `system=` parameter rather than an item in the `messages` list.
 
 <div class="callout warn">
-<strong>Claude 4.6+ removed output prefilling.</strong> Older tutorials show a technique where you start the assistant's reply with <code>{"</code> to force JSON output. This now returns a 400 error. Use Anthropic's tool-calling API or a well-crafted system prompt with <code>model_validate_json()</code> instead.
+<strong>Claude 4.6+ removed output prefilling.</strong> Older tutorials show a technique where you start the assistant's reply with <code>{"</code> to force JSON output. This now returns a 400 error. Use the native <code>client.messages.parse()</code> with <code>output_format</code>, Anthropic's <code>output_config</code> API, or the tool-calling API instead.
 </div>
 
 ## Complete example: email triage
@@ -217,7 +232,6 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 from pydantic import BaseModel
-from typing import Optional
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -226,11 +240,11 @@ class SupportTicket(BaseModel):
     subject: str
     priority: str           # "low", "medium", "high", "urgent"
     category: str           # "billing", "technical", "account", "other"
-    customer_name: Optional[str] = None
+    customer_name: str | None = None
     one_line_summary: str
 
 def triage_email(email_body: str) -> SupportTicket:
-    response = client.beta.chat.completions.parse(
+    response = client.chat.completions.parse(
         model="gpt-4o-mini",
         messages=[
             {

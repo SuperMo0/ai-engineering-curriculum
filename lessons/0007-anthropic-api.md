@@ -41,7 +41,7 @@ knowledge_check:
     section: "#anthropic-api"
     section_title: "The Anthropic API"
   - q: "What is the recommended approach for getting structured JSON output from Claude?"
-    a: "Instruct Claude in the system prompt to respond with JSON matching a specific schema (generated via `Model.model_json_schema()`), then validate the response text with `Model.model_validate_json(response_text)`. Do not use output prefilling — it returns a 400 error in Claude 4.6+."
+    a: "Use `client.messages.parse()` with `output_format=YourPydanticClass` — Claude now supports the same native structured outputs interface as OpenAI. A system-prompt-plus-`model_validate_json()` approach also works as a fallback. Never use output prefilling — it returns a 400 error in Claude 4.6+."
     section: "#structured-claude"
     section_title: "Structured outputs with Claude"
   - q: "What practical advantage does Claude's 200K context window give over GPT-4o's 128K?"
@@ -74,7 +74,7 @@ Both are capable LLMs that take text in and return text out. For most tasks, eit
 | Context window | 128K tokens | 200K tokens |
 | Long document handling | Good | Excellent — better at retrieving from the middle of long docs |
 | Instruction following | Very good | Very good — particularly strong with structured XML prompts |
-| Structured outputs | Native `.parse()` support | Tool-calling API or prompt + parse |
+| Structured outputs | Native `.parse()` support | Native `.parse()` via `output_format` (Sonnet 4.6+) |
 | Safety / refusals | Moderate | Conservative — prefers to decline ambiguous requests |
 | Pricing (mid-tier model) | ~$2.50 / $10 per M tokens | ~$3.00 / $15 per M tokens (Sonnet 4.6) |
 
@@ -125,7 +125,39 @@ Use `claude-sonnet-4-6` as your default Anthropic model — the same role that `
 
 ## Structured outputs with Claude {#structured-claude}
 
-Claude does not have an OpenAI-style `.parse()` method. The standard approach is to instruct Claude to respond with JSON in the system prompt, then validate the response with Pydantic's `model_validate_json()`:
+Claude supports native structured outputs through `client.messages.parse()` with a Pydantic `output_format` — the same interface you used for OpenAI in Lesson 4:
+
+```python
+import os
+from dotenv import load_dotenv
+from pydantic import BaseModel
+import anthropic
+
+load_dotenv()
+client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+class Invoice(BaseModel):
+    invoice_number: str
+    total_amount: float
+    currency: str
+
+response = client.messages.parse(
+    model="claude-sonnet-4-6",
+    max_tokens=512,
+    messages=[{"role": "user", "content": "Invoice INV-001, total $500 USD."}],
+    output_format=Invoice,
+)
+
+invoice = response.parsed_output
+print(invoice.invoice_number)  # INV-001
+print(invoice.total_amount)    # 500.0
+```
+
+`response.parsed_output` is a real `Invoice` instance with typed fields — identical to what OpenAI returns at `response.choices[0].message.parsed`.
+
+### System prompt fallback
+
+If you need explicit schema control or want to understand how structured outputs work under the hood, the system prompt approach is still valid: generate a JSON Schema from your Pydantic model, embed it in the system prompt, and validate the response with `model_validate_json()`:
 
 ```python
 import json
@@ -163,12 +195,10 @@ print(invoice.invoice_number)  # INV-001
 print(invoice.total_amount)    # 500.0
 ```
 
-`Invoice.model_json_schema()` generates a JSON Schema from your Pydantic model — the same schema format that Anthropic understands. Including it in the system prompt gives Claude an unambiguous specification to follow.
-
-Claude also supports structured output through its **tool-calling API** — define a "tool" whose input schema is your Pydantic model, and Claude will call it with structured arguments. This is more reliable but slightly more verbose. The tool-calling API is covered in depth in Chapter 2 (Lesson 12).
+Claude also supports structured output through its **tool-calling API** — define a "tool" whose input schema is your Pydantic model, and Claude will call it with structured arguments. The tool-calling API is covered in depth in Chapter 2 (Lesson 12).
 
 <div class="callout warn">
-<strong>Do not use output prefilling.</strong> Claude 4.6+ returns a 400 error if you include a pre-filled assistant message (e.g. starting the assistant turn with <code>{"</code>). Use the system prompt + <code>model_validate_json()</code> approach shown above instead.
+<strong>Do not use output prefilling.</strong> Claude 4.6+ returns a 400 error if you include a pre-filled assistant message (e.g. starting the assistant turn with <code>{"</code>). Use <code>client.messages.parse()</code> with <code>output_format</code>, or the system prompt approach shown above.
 </div>
 
 ## Swapping providers cleanly {#swapping-providers}
