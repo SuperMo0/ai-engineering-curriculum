@@ -128,7 +128,8 @@
             { "id": "0031", "type": "lesson", "title": "Similarity search and hybrid search", "file": "lessons/0031-similarity-hybrid-search.html" },
             { "id": "0032", "type": "lesson", "title": "Advanced retrieval — contextual retrieval, query expansion, re-ranking", "file": "lessons/0032-advanced-retrieval.html" },
             { "id": "P011", "type": "project", "title": "Multi-source RAG system", "file": "lessons/P011-multi-source-rag.html" },
-            { "id": "0033", "type": "lesson", "title": "Evaluating retrieval quality", "file": "lessons/0033-retrieval-evaluation.html" }
+            { "id": "0033", "type": "lesson", "title": "Evaluating retrieval quality", "file": "lessons/0033-retrieval-evaluation.html" },
+            { "id": "P012", "type": "chapter-project", "title": "Enterprise knowledge base", "file": "lessons/P012-ch4-knowledge-base.html" }
           ]
         }
       ]
