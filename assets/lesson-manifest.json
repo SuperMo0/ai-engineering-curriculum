@@ -112,7 +112,8 @@
           "id": "ch4-foundations",
           "title": "RAG foundations",
           "items": [
-            { "id": "0026", "type": "lesson", "title": "What is RAG and why LLMs need it", "file": "lessons/0026-what-is-rag.html" }
+            { "id": "0026", "type": "lesson", "title": "What is RAG and why LLMs need it", "file": "lessons/0026-what-is-rag.html" },
+            { "id": "0027", "type": "lesson", "title": "Embeddings — turning text into numbers", "file": "lessons/0027-embeddings.html" }
           ]
         }
       ]
