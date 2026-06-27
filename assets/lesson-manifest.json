@@ -126,7 +126,8 @@
             { "id": "0030", "type": "lesson", "title": "Building an ingestion pipeline", "file": "lessons/0030-ingestion-pipeline.html" },
             { "id": "0049", "type": "lesson", "title": "LlamaIndex — RAG without the boilerplate", "file": "lessons/0049-llamaindex.html" },
             { "id": "0031", "type": "lesson", "title": "Similarity search and hybrid search", "file": "lessons/0031-similarity-hybrid-search.html" },
-            { "id": "0032", "type": "lesson", "title": "Advanced retrieval — contextual retrieval, query expansion, re-ranking", "file": "lessons/0032-advanced-retrieval.html" }
+            { "id": "0032", "type": "lesson", "title": "Advanced retrieval — contextual retrieval, query expansion, re-ranking", "file": "lessons/0032-advanced-retrieval.html" },
+            { "id": "P011", "type": "project", "title": "Multi-source RAG system", "file": "lessons/P011-multi-source-rag.html" }
           ]
         }
       ]
