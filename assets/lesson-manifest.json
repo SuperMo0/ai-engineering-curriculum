@@ -121,7 +121,9 @@
         {
           "id": "ch4-pipeline",
           "title": "Building the pipeline",
-          "items": []
+          "items": [
+            { "id": "P010", "type": "project", "title": "Build a PDF Q&A system", "file": "lessons/P010-pdf-qa.html" }
+          ]
         }
       ]
     },
