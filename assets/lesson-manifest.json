@@ -124,7 +124,8 @@
           "items": [
             { "id": "P010", "type": "project", "title": "Build a PDF Q&A system", "file": "lessons/P010-pdf-qa.html" },
             { "id": "0030", "type": "lesson", "title": "Building an ingestion pipeline", "file": "lessons/0030-ingestion-pipeline.html" },
-            { "id": "0049", "type": "lesson", "title": "LlamaIndex — RAG without the boilerplate", "file": "lessons/0049-llamaindex.html" }
+            { "id": "0049", "type": "lesson", "title": "LlamaIndex — RAG without the boilerplate", "file": "lessons/0049-llamaindex.html" },
+            { "id": "0031", "type": "lesson", "title": "Similarity search and hybrid search", "file": "lessons/0031-similarity-hybrid-search.html" }
           ]
         }
       ]
