@@ -122,7 +122,8 @@
           "id": "ch4-pipeline",
           "title": "Building the pipeline",
           "items": [
-            { "id": "P010", "type": "project", "title": "Build a PDF Q&A system", "file": "lessons/P010-pdf-qa.html" }
+            { "id": "P010", "type": "project", "title": "Build a PDF Q&A system", "file": "lessons/P010-pdf-qa.html" },
+            { "id": "0030", "type": "lesson", "title": "Building an ingestion pipeline", "file": "lessons/0030-ingestion-pipeline.html" }
           ]
         }
       ]
