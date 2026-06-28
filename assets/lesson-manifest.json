@@ -10,17 +10,72 @@
           "id": "ch1-foundations",
           "title": "Getting started",
           "items": [
-            { "id": "0001", "type": "lesson",          "title": "Setting up your AI engineering environment",           "file": "lessons/0001-ai-dev-environment.html" },
-            { "id": "0002", "type": "lesson",          "title": "Your first LLM API call — how OpenAI works",           "file": "lessons/0002-openai-api-basics.html" },
-            { "id": "0003", "type": "lesson",          "title": "Conversations and chat history",                       "file": "lessons/0003-chat-and-history.html" },
-            { "id": "0004", "type": "lesson",          "title": "Structured outputs and function calling",              "file": "lessons/0004-structured-outputs.html" },
-            { "id": "P001", "type": "project",         "title": "Build a CLI AI assistant",                             "file": "lessons/P001-cli-assistant.html" },
-            { "id": "0005", "type": "lesson",          "title": "Prompt engineering fundamentals",                      "file": "lessons/0005-prompt-engineering.html" },
-            { "id": "0006", "type": "lesson",          "title": "Advanced prompting — tokens, cost, and reliability",   "file": "lessons/0006-advanced-prompting.html" },
-            { "id": "P002", "type": "project",         "title": "Build a document summarizer",                          "file": "lessons/P002-document-summarizer.html" },
-            { "id": "0007", "type": "lesson",          "title": "The Anthropic API — Claude and how it differs",        "file": "lessons/0007-anthropic-api.html" },
-            { "id": "0047", "type": "lesson",          "title": "Open models — running LLMs without an API key",        "file": "lessons/0047-open-models-ollama-huggingface.html" },
-            { "id": "P003", "type": "chapter-project", "title": "Multi-model AI assistant with structured output",      "file": "lessons/P003-ch1-multi-model-assistant.html" }
+            {
+              "id": "0001",
+              "type": "lesson",
+              "title": "Setting up your AI engineering environment",
+              "file": "lessons/0001-ai-dev-environment.html"
+            },
+            {
+              "id": "0002",
+              "type": "lesson",
+              "title": "Your first LLM API call — how OpenAI works",
+              "file": "lessons/0002-openai-api-basics.html"
+            },
+            {
+              "id": "0003",
+              "type": "lesson",
+              "title": "Conversations and chat history",
+              "file": "lessons/0003-chat-and-history.html"
+            },
+            {
+              "id": "0004",
+              "type": "lesson",
+              "title": "Structured outputs",
+              "file": "lessons/0004-structured-outputs.html"
+            },
+            {
+              "id": "P001",
+              "type": "project",
+              "title": "Build a CLI AI assistant",
+              "file": "lessons/P001-cli-assistant.html"
+            },
+            {
+              "id": "0005",
+              "type": "lesson",
+              "title": "Prompt engineering fundamentals",
+              "file": "lessons/0005-prompt-engineering.html"
+            },
+            {
+              "id": "0006",
+              "type": "lesson",
+              "title": "Advanced prompting — tokens, cost, and reliability",
+              "file": "lessons/0006-advanced-prompting.html"
+            },
+            {
+              "id": "P002",
+              "type": "project",
+              "title": "Build a document summarizer",
+              "file": "lessons/P002-document-summarizer.html"
+            },
+            {
+              "id": "0007",
+              "type": "lesson",
+              "title": "The Anthropic API — Claude and how it differs",
+              "file": "lessons/0007-anthropic-api.html"
+            },
+            {
+              "id": "0047",
+              "type": "lesson",
+              "title": "Open models — running LLMs without an API key",
+              "file": "lessons/0047-open-models-ollama-huggingface.html"
+            },
+            {
+              "id": "P003",
+              "type": "chapter-project",
+              "title": "Multi-model AI assistant with structured output",
+              "file": "lessons/P003-ch1-multi-model-assistant.html"
+            }
           ]
         }
       ]
@@ -35,32 +90,102 @@
           "id": "ch2-system-thinking",
           "title": "System thinking",
           "items": [
-            { "id": "0008", "type": "lesson",  "title": "What can you build with LLMs? — system types and the Staircase",  "file": "lessons/0008-llm-system-types.html" },
-            { "id": "0009", "type": "lesson",  "title": "Cognitive architecture — designing data flow",                    "file": "lessons/0009-cognitive-architecture.html" },
-            { "id": "0010", "type": "lesson",  "title": "The golden rule: use as little AI as possible",                  "file": "lessons/0010-minimize-ai.html" }
+            {
+              "id": "0008",
+              "type": "lesson",
+              "title": "What can you build with LLMs? — system types and the Staircase",
+              "file": "lessons/0008-llm-system-types.html"
+            },
+            {
+              "id": "0009",
+              "type": "lesson",
+              "title": "Cognitive architecture — designing data flow",
+              "file": "lessons/0009-cognitive-architecture.html"
+            },
+            {
+              "id": "0010",
+              "type": "lesson",
+              "title": "The golden rule: use as little AI as possible",
+              "file": "lessons/0010-minimize-ai.html"
+            }
           ]
         },
         {
           "id": "ch2-workflows",
           "title": "Workflows and tools",
           "items": [
-            { "id": "0011", "type": "lesson",  "title": "LLM call chaining and parallelization",                          "file": "lessons/0011-llm-chaining.html" },
-            { "id": "0012", "type": "lesson",  "title": "Tool calling — giving your LLM hands",                           "file": "lessons/0012-tool-calling.html" },
-            { "id": "0013", "type": "lesson",  "title": "Agentic loops — letting the LLM decide what to do next",         "file": "lessons/0013-agentic-loops.html" },
-            { "id": "0014", "type": "lesson",  "title": "Evaluator-optimizer and LLM routers",                            "file": "lessons/0014-evaluator-router.html" },
-            { "id": "P004", "type": "project", "title": "Build a multi-step document processing pipeline",                "file": "lessons/P004-document-pipeline.html" }
+            {
+              "id": "0011",
+              "type": "lesson",
+              "title": "LLM call chaining and parallelization",
+              "file": "lessons/0011-llm-chaining.html"
+            },
+            {
+              "id": "0012",
+              "type": "lesson",
+              "title": "Tool calling — giving your LLM hands",
+              "file": "lessons/0012-tool-calling.html"
+            },
+            {
+              "id": "0013",
+              "type": "lesson",
+              "title": "Agentic loops — letting the LLM decide what to do next",
+              "file": "lessons/0013-agentic-loops.html"
+            },
+            {
+              "id": "0014",
+              "type": "lesson",
+              "title": "Evaluator-optimizer and LLM routers",
+              "file": "lessons/0014-evaluator-router.html"
+            },
+            {
+              "id": "P004",
+              "type": "project",
+              "title": "Build a multi-step document processing pipeline",
+              "file": "lessons/P004-document-pipeline.html"
+            }
           ]
         },
         {
           "id": "ch2-frameworks",
           "title": "Frameworks and agents",
           "items": [
-            { "id": "0015", "type": "lesson",          "title": "LangChain, LangGraph, and CrewAI — orchestration frameworks", "file": "lessons/0015-langchain-langgraph.html" },
-            { "id": "0048", "type": "lesson",          "title": "Visual AI workflows — n8n and Zapier",                   "file": "lessons/0048-n8n-zapier.html" },
-            { "id": "0016", "type": "lesson",          "title": "PydanticAI — type-safe AI workflows",                    "file": "lessons/0016-pydantic-ai.html" },
-            { "id": "0017", "type": "lesson",          "title": "Building agents from scratch — no framework needed",     "file": "lessons/0017-agents-from-scratch.html" },
-            { "id": "P005", "type": "project",         "title": "Build a research agent from scratch",                    "file": "lessons/P005-agent-from-scratch.html" },
-            { "id": "P006", "type": "chapter-project", "title": "Automated research assistant",                           "file": "lessons/P006-ch2-research-assistant.html" }
+            {
+              "id": "0015",
+              "type": "lesson",
+              "title": "LangChain, LangGraph, and CrewAI — orchestration frameworks",
+              "file": "lessons/0015-langchain-langgraph.html"
+            },
+            {
+              "id": "0048",
+              "type": "lesson",
+              "title": "Visual AI workflows — n8n and Zapier",
+              "file": "lessons/0048-n8n-zapier.html"
+            },
+            {
+              "id": "0016",
+              "type": "lesson",
+              "title": "PydanticAI — type-safe AI workflows",
+              "file": "lessons/0016-pydantic-ai.html"
+            },
+            {
+              "id": "0017",
+              "type": "lesson",
+              "title": "Building agents from scratch — no framework needed",
+              "file": "lessons/0017-agents-from-scratch.html"
+            },
+            {
+              "id": "P005",
+              "type": "project",
+              "title": "Build a research agent from scratch",
+              "file": "lessons/P005-agent-from-scratch.html"
+            },
+            {
+              "id": "P006",
+              "type": "chapter-project",
+              "title": "Automated research assistant",
+              "file": "lessons/P006-ch2-research-assistant.html"
+            }
           ]
         }
       ]
@@ -75,29 +200,84 @@
           "id": "ch3-api",
           "title": "API foundations",
           "items": [
-            { "id": "0018", "type": "lesson",  "title": "FastAPI fundamentals for AI apps",              "file": "lessons/0018-fastapi-basics.html" },
-            { "id": "0019", "type": "lesson",  "title": "Pydantic for input/output validation",          "file": "lessons/0019-pydantic-validation.html" },
-            { "id": "0020", "type": "lesson",  "title": "Async Python — why it matters for AI",          "file": "lessons/0020-async-python.html" },
-            { "id": "P007", "type": "project", "title": "Build an AI-powered REST API",                  "file": "lessons/P007-ai-rest-api.html" }
+            {
+              "id": "0018",
+              "type": "lesson",
+              "title": "FastAPI fundamentals for AI apps",
+              "file": "lessons/0018-fastapi-basics.html"
+            },
+            {
+              "id": "0019",
+              "type": "lesson",
+              "title": "Pydantic for input/output validation",
+              "file": "lessons/0019-pydantic-validation.html"
+            },
+            {
+              "id": "0020",
+              "type": "lesson",
+              "title": "Async Python — why it matters for AI",
+              "file": "lessons/0020-async-python.html"
+            },
+            {
+              "id": "P007",
+              "type": "project",
+              "title": "Build an AI-powered REST API",
+              "file": "lessons/P007-ai-rest-api.html"
+            }
           ]
         },
         {
           "id": "ch3-infra",
           "title": "Infrastructure and persistence",
           "items": [
-            { "id": "0021", "type": "lesson",  "title": "Docker for AI applications",                    "file": "lessons/0021-docker-for-ai.html" },
-            { "id": "0022", "type": "lesson",  "title": "PostgreSQL and SQLAlchemy for AI backends",     "file": "lessons/0022-postgres-sqlalchemy.html" },
-            { "id": "0023", "type": "lesson",  "title": "Database migrations with Alembic",              "file": "lessons/0023-alembic-migrations.html" },
-            { "id": "P008", "type": "project", "title": "Containerize your API with Docker and PostgreSQL", "file": "lessons/P008-docker-postgres.html" }
+            {
+              "id": "0021",
+              "type": "lesson",
+              "title": "Docker for AI applications",
+              "file": "lessons/0021-docker-for-ai.html"
+            },
+            {
+              "id": "0022",
+              "type": "lesson",
+              "title": "PostgreSQL and SQLAlchemy for AI backends",
+              "file": "lessons/0022-postgres-sqlalchemy.html"
+            },
+            {
+              "id": "0023",
+              "type": "lesson",
+              "title": "Database migrations with Alembic",
+              "file": "lessons/0023-alembic-migrations.html"
+            },
+            {
+              "id": "P008",
+              "type": "project",
+              "title": "Containerize your API with Docker and PostgreSQL",
+              "file": "lessons/P008-docker-postgres.html"
+            }
           ]
         },
         {
           "id": "ch3-advanced",
           "title": "Background workers and MCP",
           "items": [
-            { "id": "0024", "type": "lesson",          "title": "Background workers with Celery",        "file": "lessons/0024-celery-workers.html" },
-            { "id": "0025", "type": "lesson",          "title": "MCP servers — extending AI applications","file": "lessons/0025-mcp-servers.html" },
-            { "id": "P009", "type": "chapter-project", "title": "Full AI backend service",                "file": "lessons/P009-ch3-ai-backend.html" }
+            {
+              "id": "0024",
+              "type": "lesson",
+              "title": "Background workers with Celery",
+              "file": "lessons/0024-celery-workers.html"
+            },
+            {
+              "id": "0025",
+              "type": "lesson",
+              "title": "MCP servers — extending AI applications",
+              "file": "lessons/0025-mcp-servers.html"
+            },
+            {
+              "id": "P009",
+              "type": "chapter-project",
+              "title": "Full AI backend service",
+              "file": "lessons/P009-ch3-ai-backend.html"
+            }
           ]
         }
       ]
@@ -112,24 +292,84 @@
           "id": "ch4-foundations",
           "title": "RAG foundations",
           "items": [
-            { "id": "0026", "type": "lesson", "title": "What is RAG and why LLMs need it", "file": "lessons/0026-what-is-rag.html" },
-            { "id": "0027", "type": "lesson", "title": "Embeddings — turning text into numbers", "file": "lessons/0027-embeddings.html" },
-            { "id": "0028", "type": "lesson", "title": "Chunking strategies — splitting documents for retrieval", "file": "lessons/0028-chunking.html" },
-            { "id": "0029", "type": "lesson", "title": "Vector databases — storing and searching embeddings", "file": "lessons/0029-vector-databases.html" }
+            {
+              "id": "0026",
+              "type": "lesson",
+              "title": "What is RAG and why LLMs need it",
+              "file": "lessons/0026-what-is-rag.html"
+            },
+            {
+              "id": "0027",
+              "type": "lesson",
+              "title": "Embeddings — turning text into numbers",
+              "file": "lessons/0027-embeddings.html"
+            },
+            {
+              "id": "0028",
+              "type": "lesson",
+              "title": "Chunking strategies — splitting documents for retrieval",
+              "file": "lessons/0028-chunking.html"
+            },
+            {
+              "id": "0029",
+              "type": "lesson",
+              "title": "Vector databases — storing and searching embeddings",
+              "file": "lessons/0029-vector-databases.html"
+            }
           ]
         },
         {
           "id": "ch4-pipeline",
           "title": "Building the pipeline",
           "items": [
-            { "id": "P010", "type": "project", "title": "Build a PDF Q&A system", "file": "lessons/P010-pdf-qa.html" },
-            { "id": "0030", "type": "lesson", "title": "Building an ingestion pipeline", "file": "lessons/0030-ingestion-pipeline.html" },
-            { "id": "0049", "type": "lesson", "title": "LlamaIndex — RAG without the boilerplate", "file": "lessons/0049-llamaindex.html" },
-            { "id": "0031", "type": "lesson", "title": "Similarity search and hybrid search", "file": "lessons/0031-similarity-hybrid-search.html" },
-            { "id": "0032", "type": "lesson", "title": "Advanced retrieval — contextual retrieval, query expansion, re-ranking", "file": "lessons/0032-advanced-retrieval.html" },
-            { "id": "P011", "type": "project", "title": "Multi-source RAG system", "file": "lessons/P011-multi-source-rag.html" },
-            { "id": "0033", "type": "lesson", "title": "Evaluating retrieval quality", "file": "lessons/0033-retrieval-evaluation.html" },
-            { "id": "P012", "type": "chapter-project", "title": "Enterprise knowledge base", "file": "lessons/P012-ch4-knowledge-base.html" }
+            {
+              "id": "P010",
+              "type": "project",
+              "title": "Build a PDF Q&A system",
+              "file": "lessons/P010-pdf-qa.html"
+            },
+            {
+              "id": "0030",
+              "type": "lesson",
+              "title": "Building an ingestion pipeline",
+              "file": "lessons/0030-ingestion-pipeline.html"
+            },
+            {
+              "id": "0049",
+              "type": "lesson",
+              "title": "LlamaIndex — RAG without the boilerplate",
+              "file": "lessons/0049-llamaindex.html"
+            },
+            {
+              "id": "0031",
+              "type": "lesson",
+              "title": "Similarity search and hybrid search",
+              "file": "lessons/0031-similarity-hybrid-search.html"
+            },
+            {
+              "id": "0032",
+              "type": "lesson",
+              "title": "Advanced retrieval — contextual retrieval, query expansion, re-ranking",
+              "file": "lessons/0032-advanced-retrieval.html"
+            },
+            {
+              "id": "P011",
+              "type": "project",
+              "title": "Multi-source RAG system",
+              "file": "lessons/P011-multi-source-rag.html"
+            },
+            {
+              "id": "0033",
+              "type": "lesson",
+              "title": "Evaluating retrieval quality",
+              "file": "lessons/0033-retrieval-evaluation.html"
+            },
+            {
+              "id": "P012",
+              "type": "chapter-project",
+              "title": "Enterprise knowledge base",
+              "file": "lessons/P012-ch4-knowledge-base.html"
+            }
           ]
         }
       ]
