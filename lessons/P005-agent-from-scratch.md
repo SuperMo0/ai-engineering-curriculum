@@ -6,10 +6,10 @@ chapter_title: "AI System Design"
 project_type: "Project"
 title: "Build a research agent from scratch — no framework"
 description: "Estimated time: 2–3 hours"
-prev: "0048-n8n-zapier.html"
-prev_title: "Visual AI workflows — n8n and Zapier"
-next: "P006-ch2-research-assistant.html"
-next_title: "Chapter Project: Automated research assistant"
+prev: "0015-agents-from-scratch.html"
+prev_title: "Building agents from scratch — no framework needed"
+next: "0016-pydantic-ai.html"
+next_title: "PydanticAI — type-safe AI workflows"
 prereqs:
   - "[Lesson 15](0015-agents-from-scratch.html): the Agent class — use it as your starting point"
   - "[Lesson 14](0014-agentic-loops.html): agentic loops — multi-hop reasoning is the primary use case"
@@ -63,7 +63,7 @@ Tokens: 2,847 | Iterations: 4
 
 ## Requirements
 
-- Use only the `Agent` / `Tool` classes from Lesson 17 (with any additions you need)
+- Use only the `Agent` / `Tool` classes from Lesson 15 (with any additions you need)
 - No LangChain, LangGraph, or PydanticAI
 - All five tools must be present and actually callable (not commented out)
 - `summarise_content` and `check_fact` must make a real second LLM call (not just return the input unchanged)
@@ -73,7 +73,7 @@ Tokens: 2,847 | Iterations: 4
 
 ## Suggested build order
 
-1. Copy the `Agent` and `Tool` classes from Lesson 17.
+1. Copy the `Agent` and `Tool` classes from Lesson 15.
 2. Implement and test each tool individually (call them directly as Python functions first).
 3. Register all five tools, wire up the agent, and run test question 1 (date + day of week — simplest).
 4. Run test question 2 (calculation — tests multi-step arithmetic reasoning).
@@ -96,4 +96,4 @@ Tokens: 2,847 | Iterations: 4
 - **Real web search:** Integrate the Tavily API or DuckDuckGo so your agent can answer questions about real current events.
 - **Confidence score:** After the agent produces its final answer, run a separate `check_fact` call that verifies each factual claim and produces a confidence summary.
 - **Cost tracking:** Log the estimated cost of each run (based on input/output token counts and model pricing) to a JSONL file.
-- **Conversational mode:** Extend to `ConversationalAgent` from Lesson 17 and maintain history across five sequential questions.
+- **Conversational mode:** Extend to `ConversationalAgent` from Lesson 15 and maintain history across five sequential questions.

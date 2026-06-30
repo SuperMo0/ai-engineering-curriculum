@@ -157,6 +157,12 @@
               "file": "lessons/0015-agents-from-scratch.html"
             },
             {
+              "id": "P005",
+              "type": "project",
+              "title": "Build a research agent from scratch",
+              "file": "lessons/P005-agent-from-scratch.html"
+            },
+            {
               "id": "0016",
               "type": "lesson",
               "title": "PydanticAI — type-safe AI workflows",
@@ -185,12 +191,6 @@
               "type": "lesson",
               "title": "Visual AI workflows — n8n and Zapier",
               "file": "lessons/0048-n8n-zapier.html"
-            },
-            {
-              "id": "P005",
-              "type": "project",
-              "title": "Build a research agent from scratch",
-              "file": "lessons/P005-agent-from-scratch.html"
             },
             {
               "id": "P006",

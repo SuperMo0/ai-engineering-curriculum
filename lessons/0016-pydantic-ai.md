@@ -5,8 +5,8 @@ chapter: 2
 chapter_title: "AI System Design"
 title: "PydanticAI — type-safe AI workflows"
 description: "30–40 min read · Hands-on coding"
-prev: "0015-agents-from-scratch.html"
-prev_title: "Building agents from scratch — no framework needed"
+prev: "P005-agent-from-scratch.html"
+prev_title: "Project: Build a research agent from scratch"
 next: "0017-langchain.html"
 next_title: "LangChain — the agent framework"
 prereqs:
